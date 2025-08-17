@@ -484,48 +484,75 @@
         }
 
         body.dark .skills-group {
-            background: rgba(255, 255, 255, 0.03);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         body.dark .skills-group h3 {
-            color: #4a90e2;
+            color: #66b3ff;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(102, 179, 255, 0.2);
         }
 
         body.dark .skills-group h3::after {
-            background: linear-gradient(90deg, #4a90e2, transparent);
+            background: linear-gradient(90deg, #66b3ff, transparent);
+            opacity: 0.8;
         }
 
         body.dark .skill {
-            background: #1a1a1a;
-            color: #eee;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #242424;
+            color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         body.dark .skill:hover {
-            background: #202020;
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
-            border: 1px solid rgba(74, 144, 226, 0.2);
+            background: #2a2a2a;
+            box-shadow: 0 5px 15px rgba(102, 179, 255, 0.15);
+            border: 1px solid rgba(102, 179, 255, 0.3);
             transform: translateY(-3px);
         }
 
+        body.dark .skill-name {
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
         body.dark .skill-years {
-            color: #888;
+            color: #b3b3b3;
+            font-weight: 500;
         }
 
         body.dark .skill-level {
-            color: #4a90e2;
+            color: #66b3ff;
+            font-weight: 600;
         }
 
         body.dark .skill-bar {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
         }
 
         body.dark .skill-progress {
-            background: linear-gradient(90deg, #4a90e2, #00c6ff);
-            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+            background: linear-gradient(90deg, #66b3ff, #3399ff);
+            box-shadow: 0 0 15px rgba(102, 179, 255, 0.4);
+        }
+
+        body.dark .skill-icon {
+            filter: brightness(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            body.dark .skill {
+                background: #242424;
+            }
+
+            body.dark .skill:hover {
+                background: #2a2a2a;
+            }
         }
 
         @media (max-width: 768px) {
@@ -601,10 +628,6 @@
         body.dark .card {
             background: #1e1e1e;
             color: #eee;
-        }
-
-        body.dark .skill {
-            background: #4a90e2;
         }
 
         body.dark footer {

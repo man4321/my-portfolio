@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manohar Seervi | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Mobile menu styles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .menu-toggle span {
+            background-color: #fff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a90e2, #0072ff);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 1s forwards 0.3s;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.7s;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #4a90e2, #0072ff);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        header canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        header img,
+        header h1,
+        header p {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s;
+            flex-wrap: wrap;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                justify-content: flex-end;
+                padding-right: 4rem;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .toggle-btn {
+                margin: 1rem 0 0 0;
+            }
+        }
+
+        nav ul li a:hover {
+            color: #0072ff;
+        }
+
+        .toggle-btn {
+            margin-left: 2rem;
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background: #0072ff;
+            color: #fff;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: #0056cc;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0072ff;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.75rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            header img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        .experience,
+        .projects,
+        .skills {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 1.25rem;
+            }
+
+            .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .skills-list {
+                justify-content: center;
+            }
+
+            .skill {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill {
+            background: #0072ff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .skill:hover {
+            background: #0056cc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #222;
+            color: #ccc;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        footer a {
+            color: #0072ff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark mode */
+        body.dark {
+            background: #121212;
+            color: #eee;
+        }
+
+        body.dark nav {
+            background: #1f1f1f;
+        }
+
+        body.dark nav ul li a {
+            color: #eee;
+        }
+
+        body.dark nav ul li a:hover {
+            color: #4a90e2;
+        }
+
+        body.dark .card {
+            background: #1e1e1e;
+            color: #eee;
+        }
+
+        body.dark .skill {
+            background: #4a90e2;
+        }
+
+        body.dark footer {
+            background: #111;
+            color: #aaa;
+        }
+
+        .typing {
+            border-right: 3px solid #fff;
+            display: inline-block;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <canvas id="particles"></canvas>
+        <img src="./assets/ManoharPhotot.jpeg" alt="Manohar Seervi">
+        <h1>Manohar Seervi</h1>
+        <p>I am a <span class="typing"></span></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav style="z-index: 100;">
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="navMenu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="toggle-btn" id="toggleDark">🌙 Dark Mode</button>
+    </nav>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I’m a Frontend Engineer with 5 years of experience designing and developing scalable, high-performance
+            applications using React.js, TypeScript, and modern JavaScript.
+            I specialize in micro-frontend architecture, web performance optimization, and delivering products for
+            millions of active users.
+        </p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience">
+            <div class="card">
+                <h3>Reliance Jio Platforms Ltd.</h3>
+                <p><strong>Sep 2022 – Present</strong></p>
+                <ul>
+                    <li>Architected and maintained micro-frontend architecture for Jio Health Hub, reducing release time
+                        by 30%.</li>
+                    <li>Developed reusable, JSON-driven UI components reducing feature delivery time by 25%.</li>
+                    <li>Optimized page load time by 20% through Vite integration and asset compression.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Wow Labz</h3>
+                <p><strong>Apr 2021 – Sep 2022</strong></p>
+                <ul>
+                    <li>Built scalable frontend component libraries, reducing code duplication by 40%.</li>
+                    <li>Delivered 200+ enhancements and bug fixes for SaaS & fintech platforms.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>La Net Team Software</h3>
+                <p><strong>Jun 2020 – Dec 2020</strong></p>
+                <ul>
+                    <li>Developed custom APIs in Node.js improving response times by 35%.</li>
+                    <li>Built responsive UI components to enhance user interaction and retention.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <h3>Jio Health Hub</h3>
+                <p>Built mobile-first appointment booking system with real-time updates and React Native features for
+                    iOS/Android.</p>
+            </div>
+            <div class="card">
+                <h3>Vistalytics</h3>
+                <p>Designed interactive financial dashboards and optimized rendering for large datasets using
+                    Highcharts.</p>
+            </div>
+            <div class="card">
+                <h3>PDF Editor</h3>
+                <p>Created a drag-and-drop PDF editor with role-based access control and annotation features.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <span class="skill">React.js</span>
+            <span class="skill">JavaScript (ES6+)</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">Redux</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">MongoDB</span>
+            <span class="skill">Tailwind CSS</span>
+            <span class="skill">Material-UI</span>
+            <span class="skill">AWS</span>
+            <span class="skill">Docker</span>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:manohar2000.seervi@gmail.com">manohar2000.seervi@gmail.com</a></p>
+        <p>Phone: <a href="tel:+917976687705">+91 79766 87705</a></p>
+        <p>
+            <a href="https://linkedin.com/in/manohar-seervi-341557170" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/man4321" target="_blank">GitHub</a>
+            <a href="https://leetcode.com/u/Manohar_exito/" target="_blank">LeetCode (350+ Problems Solved)</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Manohar Seervi</p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+
+</html>

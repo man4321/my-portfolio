@@ -14,7 +14,7 @@ let isDeleting = false;
 function typeEffect() {
     const currentRole = roles[roleIndex];
     if (isDeleting) {
-        typingElement.textContent = currentRole.substring(0, charIndex + 1);
+        typingElement.textContent = currentRole.substring(0, charIndex);
         charIndex--;
     } else {
         typingElement.textContent = currentRole.substring(0, charIndex + 1);

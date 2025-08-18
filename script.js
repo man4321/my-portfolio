@@ -65,8 +65,8 @@ toggleDark.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const isDark = document.body.classList.contains('dark');
     toggleDark.innerHTML = isDark
-        ? '<span style="font-size: 1.1em; line-height: 1;">☀️</span><span>Light Mode</span>'
-        : '<span style="font-size: 1.1em; line-height: 1;">🌙</span><span>Dark Mode</span>';
+        ? '<span style="font-size: 1.1em; line-height: 1;">☀️</span><span></span>'
+        : '<span style="font-size: 1.1em; line-height: 1;">🌙</span><span></span>';
 });
 
 // Scroll animations

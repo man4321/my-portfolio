@@ -14,7 +14,7 @@ let isDeleting = false;
 function typeEffect() {
     const currentRole = roles[roleIndex];
     if (isDeleting) {
-        typingElement.textContent = currentRole.substring(0, charIndex-1);
+        typingElement.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
     } else {
         typingElement.textContent = currentRole.substring(0, charIndex + 1);
@@ -309,87 +309,81 @@ animateTrail();
 typeEffect();
 initSkills();
 
+const HeryPorterTheme = () => {
+    const hpBtn = document.getElementById("hpThemeBtn");
+    const body = document.body;
 
+    // // Toggle theme
+    // hpBtn.addEventListener("click", () => {
+    //     body.classList.toggle("hp-theme");
 
+    //     if (body.classList.contains("hp-theme")) {
+    //         spawnCandles();
+    //         spawnSnake();
+    //     } else {
+    //         document.querySelectorAll(".candle, .snake").forEach(el => el.remove());
+    //     }
+    // });
 
+    // // Floating candles
+    function spawnCandles() {
+        for (let i = 0; i < 10; i++) {
+            let candle = document.createElement("div");
+            candle.className = "candle";
+            candle.style.left = Math.random() * window.innerWidth + "px";
+            candle.style.top = Math.random() * (window.innerHeight / 2) + "px";
+            document.body.appendChild(candle);
+        }
+    }
 
+    // // Snake slithering
+    function spawnSnake() {
+        let snake = document.createElement("img");
+        snake.src = "https://upload.wikimedia.org/wikipedia/commons/7/7a/Snake_icon.svg"; // placeholder snake
+        snake.className = "snake";
+        document.body.appendChild(snake);
+    }
 
-const skills = [
-    "React.js", "JavaScript", "TypeScript", "Redux", "Node.js", "MongoDB",
-    "Tailwind CSS", "Material-UI", "AWS", "Docker", "Git", "Next.js",
-    "Express.js", "HTML5", "CSS3", "Agile", "REST APIs", "CI/CD"
-];
+    // Cursor sparks (wand effect)
+    window.addEventListener("mousemove", (e) => {
+        if (!body.classList.contains("hp-theme")) return;
 
-const radius = 150; // distance from center
-const skillCloud = document.getElementById("skillCloud");
-let angleX = Math.PI / 200;
-let angleY = Math.PI / 200;
-let mouseX = 0, mouseY = 0;
-
-// Create skill elements
-const tags = skills.map(text => {
-    const el = document.createElement("span");
-    el.textContent = text;
-    skillCloud.appendChild(el);
-    return { el };
-});
-
-// Position tags in sphere
-function positionAll() {
-    const length = tags.length;
-    const phi = Math.PI * (3 - Math.sqrt(5)); // golden angle
-    tags.forEach((tag, i) => {
-        const y = 1 - (i / (length - 1)) * 2;
-        const radiusAtY = Math.sqrt(1 - y * y);
-        const theta = phi * i;
-        const x = Math.cos(theta) * radiusAtY;
-        const z = Math.sin(theta) * radiusAtY;
-
-        tag.x = x * radius;
-        tag.y = y * radius;
-        tag.z = z * radius;
+        let spark = document.createElement("div");
+        spark.className = "spark";
+        spark.style.left = e.pageX + "px";
+        spark.style.top = e.pageY + "px";
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1000);
     });
-}
-positionAll();
+    function spawnFireplace() {
+        const fireplace = document.getElementById("fireplace");
+        fireplace.innerHTML = ""; // reset
+        for (let i = 0; i < 4; i++) {
+            let flame = document.createElement("div");
+            flame.className = "flame";
+            fireplace.appendChild(flame);
+        }
+        fireplace.style.display = "block";
+    }
 
-// Rotate sphere
-function rotate() {
-    const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
-    const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+    function removeFireplace() {
+        const fireplace = document.getElementById("fireplace");
+        fireplace.innerHTML = "";
+        fireplace.style.display = "none";
+    }
 
-    tags.forEach(tag => {
-        // Rotate Y axis
-        let x1 = tag.x * cosY - tag.z * sinY;
-        let z1 = tag.x * sinY + tag.z * cosY;
-        // Rotate X axis
-        let y1 = tag.y * cosX - z1 * sinX;
-        let z2 = tag.y * sinX + z1 * cosX;
+    hpBtn.addEventListener("click", () => {
+        body.classList.toggle("hp-theme");
 
-        tag.x = x1;
-        tag.y = y1;
-        tag.z = z2;
-
-        const scale = 500 / (500 - tag.z);
-        const x = tag.x * scale + skillCloud.offsetWidth / 2;
-        const y = tag.y * scale + skillCloud.offsetHeight / 2;
-
-        tag.el.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
-        tag.el.style.zIndex = Math.floor(scale * 100);
-        tag.el.style.opacity = scale / 2;
+        if (body.classList.contains("hp-theme")) {
+            spawnCandles();
+            spawnSnake();
+            spawnFireplace(); // 🔥 add fireplace
+        } else {
+            document.querySelectorAll(".candle, .snake").forEach(el => el.remove());
+            removeFireplace();
+        }
     });
-}
 
-function animateCloud() {
-    rotate();
-    requestAnimationFrame(animateCloud);
 }
-animateCloud();
-
-// Mouse control
-skillCloud.addEventListener("mousemove", (e) => {
-    const rect = skillCloud.getBoundingClientRect();
-    mouseX = (e.clientX - rect.left - rect.width / 2) / 200;
-    mouseY = (e.clientY - rect.top - rect.height / 2) / 200;
-    angleX = mouseY * 0.05;
-    angleY = mouseX * 0.05;
-});
+HeryPorterTheme();

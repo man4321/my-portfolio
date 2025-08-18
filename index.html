@@ -54,18 +54,25 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f9f9f9;
+            /* color: #333; */
+            /* background: #f9f9f9; */
+            background: radial-gradient(circle at 20% 30%, #1a1a40, #0d0d1a);
+            color: #f5f5f5;
             /* transition: background 0.3s, color 0.3s; */
             transition: background 0.6s ease, color 0.6s ease;
 
         }
 
+        h2 {
+            color: #a29bfe;
+            text-shadow: 0 0 15px #6c5ce7;
+        }
+
         header {
-            background: linear-gradient(135deg, #4a90e2, #0072ff);
+            /* background: linear-gradient(135deg, #4a90e2, #0072ff);
             color: #fff;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem; */
         }
 
         header img {
@@ -99,11 +106,14 @@
             background-size: 800% 800%;
             animation: gradientShift 20s ease infinite;
             position: relative;
-            /* background: linear-gradient(135deg, #4a90e2, #0072ff); */
             color: #fff;
             text-align: center;
             padding: 4rem 2rem;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         header canvas {
@@ -135,6 +145,9 @@
             align-items: center;
             transition: all 0.3s ease;
             z-index: 1000;
+            background: rgba(30, 30, 60, 0.8);
+            border: 1px solid rgba(162, 155, 254, 0.3);
+            box-shadow: 0 0 20px rgba(162, 155, 254, 0.2);
         }
 
         nav ul {
@@ -149,7 +162,8 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #333;
+            /* color: #333; */
+            color: #fff;
             font-weight: 600;
             transition: color 0.3s;
         }
@@ -292,11 +306,11 @@
         }
 
         .card {
-            background: #fff;
             padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            /* transition: transform 0.3s, background 0.3s, color 0.3s; */
+            background: rgba(30, 30, 60, 0.8);
+            border: 1px solid rgba(162, 155, 254, 0.3);
+            box-shadow: 0 0 20px rgba(162, 155, 254, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         }
@@ -421,7 +435,7 @@
 
         .skill {
             background: #ffffff;
-            color: #333;
+            color: #fff;
             padding: 1.2rem;
             border-radius: 12px;
             font-size: 0.95rem;
@@ -431,6 +445,9 @@
             gap: 0.8rem;
             position: relative;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(30, 30, 60, 0.8);
+            border: 1px solid rgba(162, 155, 254, 0.3);
+            box-shadow: 0 0 20px rgba(162, 155, 254, 0.2);
         }
 
         .skill:hover {
@@ -466,7 +483,7 @@
         }
 
         .skill-years {
-            color: #666;
+            color: #fff;
         }
 
         .skill-bar {
@@ -478,8 +495,9 @@
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, #0072ff, #00c6ff);
             width: 0;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.6);
             transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1);
         }
 
@@ -643,6 +661,247 @@
             animation: blink 0.7s infinite;
         }
 
+        #contact {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: rgba(20, 20, 30, 0.6);
+            color: #fff;
+            border-radius: 14px;
+            margin: 3rem auto;
+            max-width: 750px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #contact h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #6c5ce7, #00f5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #contact p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        #contact a {
+            display: inline-block;
+            margin: 0.4rem 0.5rem;
+            padding: 0.55rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            /* soft purple-blue */
+            box-shadow: 0 2px 8px rgba(118, 75, 162, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        #contact a:hover {
+            transform: translateY(-2px) scale(1.04);
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            /* smooth teal-blue on hover */
+            box-shadow: 0 4px 12px rgba(24, 90, 157, 0.4);
+        }
+
+        .magic-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #1a472a, #000);
+            /* Slytherin vibes */
+            color: #f5f5f5;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 100, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .magic-btn:hover {
+            background: linear-gradient(135deg, #2a623d, #111);
+            box-shadow: 0 0 20px rgba(0, 255, 100, 0.6);
+        }
+
+        body.hp-theme {
+            background: radial-gradient(circle at center, #0a0a0a, #000);
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+
+        /* Floating candle effect */
+        .candle {
+            position: absolute;
+            width: 4px;
+            height: 40px;
+            background: #fff5cc;
+            box-shadow: 0 0 15px rgba(255, 200, 100, 0.8);
+            border-radius: 2px;
+            animation: floatCandle 6s infinite ease-in-out;
+        }
+
+        @keyframes floatCandle {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-20px);
+                opacity: 1;
+            }
+        }
+
+        /* Snake slithering across */
+        .snake {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            opacity: 0.6;
+            animation: slither 15s linear infinite;
+        }
+
+        @keyframes slither {
+            from {
+                left: -200px;
+                top: 60%;
+            }
+
+            to {
+                left: 110%;
+                top: 60%;
+            }
+        }
+
+        /* Cursor magic sparks */
+        .spark {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: gold;
+            box-shadow: 0 0 10px orange, 0 0 20px yellow;
+            pointer-events: none;
+            animation: fadeSpark 1s forwards;
+        }
+
+        /* Fireplace flames */
+        #fireplace {
+            position: relative;
+            height: 100px;
+            width: 200px;
+            margin: 20px auto 0;
+            display: none;
+            /* hidden until HP mode */
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255, 200, 50, 0.9) 0%, rgba(255, 50, 0, 0.8) 70%, transparent 100%);
+            border-radius: 50%;
+            animation: flicker 1s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .flame:nth-child(1) {
+            left: 30px;
+            animation-delay: 0s;
+        }
+
+        .flame:nth-child(2) {
+            left: 70px;
+            height: 50px;
+            animation-delay: 0.2s;
+        }
+
+        .flame:nth-child(3) {
+            left: 110px;
+            animation-delay: 0.4s;
+        }
+
+        .flame:nth-child(4) {
+            left: 150px;
+            height: 55px;
+            animation-delay: 0.1s;
+        }
+
+        .flip-card {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            transition: transform 2s ease-in-out;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .flip-card-front img,
+        .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            transition: transform 2s ease;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                transform: scaleY(1) translateY(0);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scaleY(1.4) translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeSpark {
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+
+
         @keyframes blink {
             50% {
                 border-color: transparent;
@@ -685,7 +944,19 @@
     <!-- Header -->
     <header>
         <canvas id="particles"></canvas>
-        <img src="./assets/ManoharPhotot.jpeg" alt="Manohar Seervi">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- Front side -->
+                <div class="flip-card-front">
+                    <img src="./assets/ManoharPhotot.jpeg" alt="Front Image">
+                </div>
+                <!-- Back side -->
+                <div class="flip-card-back">
+                    <img src="./assets/ManoharPhoto1.png" alt="Back Image">
+                </div>
+            </div>
+        </div>
+        <!-- <img src="./assets/ManoharPhoto1.png" alt="Manohar Seervi"> -->
         <h1>Manohar Seervi</h1>
         <p>I am a <span class="typing"></span></p>
     </header>
@@ -704,7 +975,9 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <!-- <button id="hpThemeBtn" class="magic-btn">⚡ Harry Potter Mode</button> -->
         <button class="toggle-btn" id="toggleDark">
+
             <span style="font-size: 1.1em; line-height: 1;">🌙</span>
         </button>
     </nav>
@@ -951,7 +1224,9 @@
     <!-- Footer -->
     <footer>
         <p>© 2025 Manohar Seervi</p>
+        <div id="fireplace"></div>
     </footer>
+
     <script src="./script.js"></script>
 </body>
 
